@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/slagsmål/bin/Debug/net7.0/slagsmål.dll",
             "args": [],
             "cwd": "${workspaceFolder}/slagsmål",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false
         },
         {

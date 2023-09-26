@@ -1,0 +1,14 @@
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\bin\Debug\net7.0\slagsmål.exe
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\bin\Debug\net7.0\slagsmål.deps.json
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\bin\Debug\net7.0\slagsmål.runtimeconfig.json
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\bin\Debug\net7.0\slagsmål.dll
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\bin\Debug\net7.0\slagsmål.pdb
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.GeneratedMSBuildEditorConfig.editorconfig
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.AssemblyInfoInputs.cache
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.AssemblyInfo.cs
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.csproj.CoreCompileInputs.cache
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.dll
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\refint\slagsmål.dll
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.pdb
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\slagsmål.genruntimeconfig.cache
+G:\Min enhet\prog 1 med micke B!!\slagsmål\slagsmål\obj\Debug\net7.0\ref\slagsmål.dll
