@@ -4,12 +4,16 @@ var random = new Random();
 
 
 
-object [][] weapon = {
+object[][] weapon = {
 new object[] {"hand", 10, 30, 100},
 new object[] {"knä", 5,40,80},
 new object[]{"näsa", 1,3,5}
 };
+
+bool success = false;
+while(success==false){
 selectWepon(player1);
+}
 selectWepon(player2);
 
 
@@ -19,7 +23,7 @@ System.Console.WriteLine("vad heter du");
 player1.name = Console.ReadLine();
 System.Console.WriteLine($"välkomen {player1.name}");
 
-string[] fiende = { "fefe", "fofo", "fifi", "fallafle","förre", "fack" };
+string[] fiende = { "fefe", "fofo", "fifi", "fallafle", "förre", "fack" };
 player2.name = fiende[random.Next(0, fiende.Count())];
 System.Console.WriteLine($"your enemy is {player2.name}");
 
@@ -28,24 +32,22 @@ Console.ReadLine();
 // slagsmål
 while (player1.hp > 0 && player2.hp > 0)
 {
-Console.Clear();
+    Console.Clear();
 
-skada(player1,player2);
+    skada(player1, player2);
 
-skada(player2,player1);
+    skada(player2, player1);
 
-berätta();
+    berätta();
 
-Console.ReadLine();
+    Console.ReadLine();
 }
 
 
 //Slut på strid
-
-Console.ForegroundColor = ConsoleColor.Magenta;
-
 if (player1.hp <= 0 || player2.hp <= 0)
 {
+    Console.ForegroundColor = ConsoleColor.Magenta;
     Console.Clear();
     System.Console.WriteLine($"striden är över");
 }
@@ -53,8 +55,9 @@ if (player1.hp <= 0 || player2.hp <= 0)
 Console.ReadLine();
 
 
-void berätta(){
-        System.Console.Write($"your remaining hp is ");
+void berätta()
+{
+    System.Console.Write($"your remaining hp is ");
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(player1.hp);
     Console.ForegroundColor = ConsoleColor.White;
@@ -64,24 +67,42 @@ void berätta(){
     Console.ForegroundColor = ConsoleColor.White;
 }
 
-void skada(Player player, Player träff){
-  int damage = random.Next(Convert.ToInt32(weapon[player.wepon][1]),Convert.ToInt32(weapon[player.wepon][2]));
-    if(random.Next(100) < Convert.ToInt32(weapon[player.wepon][3])){
-    träff.hp-= damage;
-    System.Console.WriteLine($"{player.name} gör {damage} skada {weapon[player.wepon][0]}");
+void skada(Player player, Player träff)
+{
+    int damage = random.Next(Convert.ToInt32(weapon[player.wepon][1]), Convert.ToInt32(weapon[player.wepon][2]));
+    if (random.Next(100) < Convert.ToInt32(weapon[player.wepon][3]))
+    {
+        träff.hp -= damage;
+        System.Console.WriteLine($"{player.name} gör {damage} skada {weapon[player.wepon][0]}");
     }
-    else{
+    else
+    {
         System.Console.WriteLine("miss");
     }
 }
 
-void selectWepon(Player player){
+void selectWepon(Player player)
+{
 
-for(int i=0;i<weapon.Count() ;i++ ){
-    System.Console.WriteLine($"{i+1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit");
-}
-string b = Console.ReadLine();
-player.wepon = Convert.ToInt32(b)-1;
+    for (int i = 0; i < weapon.Count(); i++)
+    {
+        System.Console.WriteLine($"{i + 1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit");
+    }
+
+    int bNum = -1;
+    bool success = false;
+    while (bNum < 0 || bNum > weapon.Count() && success == false)
+    {
+        string b = Console.ReadLine();
+        success = int.TryParse(b, out bNum);
+
+        if (!success)
+        {
+            Console.WriteLine("A NUMBER, idiot!");
+        }
+        
+    }
+    player.wepon = bNum - 1;
 
 }
 
