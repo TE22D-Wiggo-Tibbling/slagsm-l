@@ -7,19 +7,21 @@ var random = new Random();
 object[][] weapon = {
 new object[] {"hand", 10, 20, 100,"fegis"},
 new object[] {"knä", 5,40,75, "kan skada men kan vara svår att träffa"},
-new object[]{"näsa", 1,3,5,"en dålig idee"},
-new object[]{"för tung pinne",100,1000,1, "tung klubba men om träff, di win"},
-new object[]{"pipa",0,0,100,"gör inget men du är cool"}
+new object[]{"näsa", 1,3,15,"en dålig idee"},
+new object[]{"för tung pinne" ,100,1000,1, "tung klubba men om träff, di win"},
+new object[]{"pipa" ,0,0,100,"gör inget men du är cool"}, 
+new object[]{"glock" ,40,60,2,"du har usel sikte"},
 };
-
-// bool success = false;
 
 while (!player1.fof)
 {
+    System.Console.WriteLine("VÄLJ DITT VAPEN");
     selectWepon(player1);
 }
-while (!player2.fof){
-selectWepon(player2);
+while (!player2.fof)
+{
+    System.Console.WriteLine("VÄLJ DIN MOTSTONDARES VAPEN");
+    selectWepon(player2);
 }
 
 
@@ -96,20 +98,20 @@ void selectWepon(Player player)
 
     for (int i = 0; i < weapon.Count(); i++)
     {
-        
-        System.Console.Write($"{i + 1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit" );
-        Console.ForegroundColor=ConsoleColor.Blue;
+
+        System.Console.Write($"{i + 1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit");
+        Console.ForegroundColor = ConsoleColor.Blue;
         System.Console.WriteLine($" {weapon[i][4]}");
-        Console.ForegroundColor=ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     int bNum = -1;
-    while (bNum < 0 || bNum > weapon.Count() || player.success == false)
+    while (bNum < 1 || bNum > weapon.Count())
     {
         string b = Console.ReadLine();
         player.success = int.TryParse(b, out bNum);
 
-        if (!player.success || bNum < 0 || bNum > weapon.Count())
+        if (!player.success || bNum < 1 || bNum > weapon.Count())
         {
             Console.WriteLine("A NUMBER, idiot!");
         }
