@@ -5,22 +5,32 @@ var random = new Random();
 
 
 object[][] weapon = {
-new object[] {"hand", 10, 30, 100},
-new object[] {"knä", 5,40,80},
-new object[]{"näsa", 1,3,5}
+new object[] {"hand", 10, 20, 100,"fegis"},
+new object[] {"knä", 5,40,75, "kan skada men kan vara svår att träffa"},
+new object[]{"näsa", 1,3,5,"en dålig idee"},
+new object[]{"för tung pinne",100,1000,1, "tung klubba men om träff, di win"},
+new object[]{"pipa",0,0,100,"gör inget men du är cool"}
 };
 
-bool success = false;
-while(success==false){
-selectWepon(player1);
+// bool success = false;
+
+while (!player1.fof)
+{
+    selectWepon(player1);
 }
+while (!player2.fof){
 selectWepon(player2);
+}
 
 
 
+while (player1.name.Length <= 0)
+{
+    System.Console.WriteLine("vad heter du");
+    player1.name = Console.ReadLine();
 
-System.Console.WriteLine("vad heter du");
-player1.name = Console.ReadLine();
+}
+
 System.Console.WriteLine($"välkomen {player1.name}");
 
 string[] fiende = { "fefe", "fofo", "fifi", "fallafle", "förre", "fack" };
@@ -86,21 +96,28 @@ void selectWepon(Player player)
 
     for (int i = 0; i < weapon.Count(); i++)
     {
-        System.Console.WriteLine($"{i + 1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit");
+        
+        System.Console.Write($"{i + 1}: {weapon[i][0]}  {weapon[i][1]}-{weapon[i][2]} damage  {weapon[i][3]}% chanse to hit" );
+        Console.ForegroundColor=ConsoleColor.Blue;
+        System.Console.WriteLine($" {weapon[i][4]}");
+        Console.ForegroundColor=ConsoleColor.White;
     }
 
     int bNum = -1;
-    bool success = false;
-    while (bNum < 0 || bNum > weapon.Count() && success == false)
+    while (bNum < 0 || bNum > weapon.Count() || player.success == false)
     {
         string b = Console.ReadLine();
-        success = int.TryParse(b, out bNum);
+        player.success = int.TryParse(b, out bNum);
 
-        if (!success)
+        if (!player.success || bNum < 0 || bNum > weapon.Count())
         {
             Console.WriteLine("A NUMBER, idiot!");
         }
-        
+        else
+        {
+            player.fof = true;
+        }
+
     }
     player.wepon = bNum - 1;
 
@@ -108,9 +125,13 @@ void selectWepon(Player player)
 
 public class Player
 {
-    public string name;
+    public string name = "";
 
     public int hp = 100;
 
     public int wepon;
+
+    public bool success = false;
+
+    public bool fof = false;
 }
