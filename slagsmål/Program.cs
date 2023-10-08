@@ -1,18 +1,32 @@
-﻿Player player1 = new Player();
+﻿using System.Globalization;
+
+Player player1 = new Player();
 Player player2 = new Player();
 var random = new Random();
 
 
 
 object[][] weapon = {
-new object[] {"hand", 10, 20, 100,"fegis"},
-new object[] {"knä", 5,40,75, "kan skada men kan vara svår att träffa"},
-new object[]{"näsa", 1,3,15,"en dålig idee"},
-new object[]{"för tung pinne" ,100,1000,1, "tung klubba men om träff, di win"},
-new object[]{"pipa" ,0,0,100,"gör inget men du är cool"}, 
-new object[]{"glock" ,40,60,2,"du har usel sikte"},
+ /*hand*/new object[] {"hand", 10, 20, 100,"fegis"},
+/*knä*/new object[] {"knä", 5,40,75, "kan skada men kan vara svår att träffa"},
+/*näsa*/new object[]{"näsa", 1,3,15,"en dålig idee"},
+/*för tung pinne*/new object[]{"för tung pinne" ,100,1000,1, "tung klubba men om träff, di win"},
+/*pip<*/new object[]{"pipa" ,0,0,100,"gör inget men du är cool"}, 
+/*glock*/new object[]{"glock" ,40,60,2,"du har usel sikte"},
 };
 
+object[][][] wiapon = {
+    new object[][]{
+        new object[]{"ja","nej"}
+    }
+};
+
+/**/
+object[][] item ={
+    new object[]{"potion",20}
+};
+
+System.Console.WriteLine(wiapon[0][0][1]);
 while (!player1.fof)
 {
     System.Console.WriteLine("VÄLJ DITT VAPEN");
@@ -81,11 +95,17 @@ void berätta()
 
 void skada(Player player, Player träff)
 {
+    int u=random.Next(100);
     int damage = random.Next(Convert.ToInt32(weapon[player.wepon][1]), Convert.ToInt32(weapon[player.wepon][2]));
-    if (random.Next(100) < Convert.ToInt32(weapon[player.wepon][3]))
+    if (u < Convert.ToInt32(weapon[player.wepon][3])&&u>=2)
     {
         träff.hp -= damage;
         System.Console.WriteLine($"{player.name} gör {damage} skada {weapon[player.wepon][0]}");
+    }
+    else if(u==1){
+        damage=Convert.ToInt32(weapon[player.wepon][2])*2;
+        träff.hp-=damage;
+        System.Console.WriteLine($"crit!!{damage}");
     }
     else
     {
@@ -136,4 +156,6 @@ public class Player
     public bool success = false;
 
     public bool fof = false;
+
+    public int item;
 }
