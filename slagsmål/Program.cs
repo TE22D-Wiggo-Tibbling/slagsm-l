@@ -49,7 +49,7 @@ while (player1.name.Length <= 0)
 
 System.Console.WriteLine($"välkomen {player1.name}");
 
-string[] fiende = { "fefe", "fofo", "fifi", "fallafle", "förre", "fack" };
+string[] fiende = { "fefe", "fofo", "fifi", "fallafle", "förre", "fack (en ficka)" };
 player2.name = fiende[random.Next(0, fiende.Count())];
 System.Console.WriteLine($"your enemy is {player2.name}");
 
